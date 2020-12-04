@@ -55,7 +55,7 @@ temp_dict = {}
 for i in np.arange(0.5,10.5, 0.5):
     # Test if it is a float or not to format it right
     if i == int(i):
-        # Add an empty space at the beginnign to make sure this is not just counting the 1.5°C and so forth as 5°C
+        # Add an empty space at the beginnign to make sure this is not counting e.g. 1.5°C  as 5°C
         key = " " + str(int(i)) + "°C"
     else: 
         key = " " + str(i )+ "°C"
