@@ -1,0 +1,275 @@
+Starting with 04_Chapter-1.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Finished the all pages until page 50
+Found  1.5°C 16 time(s)
+Found  2°C 4 time(s)
+Starting with 05_Chapter-2-V3.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Finished the all pages until page 50
+Finished the all pages until page 100
+Found  1°C 1 time(s)
+Found  1.5°C 27 time(s)
+Found  2°C 12 time(s)
+Found  2.5°C 1 time(s)
+Found  5°C 1 time(s)
+Found  10°C 1 time(s)
+Starting with 05_SROCC_Ch01_FINAL.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Finished the all pages until page 50
+Starting with 06_Chapter-3.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Finished the all pages until page 50
+Found  1°C 1 time(s)
+Found  1.5°C 7 time(s)
+Found  2°C 11 time(s)
+Found  3°C 2 time(s)
+Found  4°C 1 time(s)
+Starting with 06_SROCC_Ch02_FINAL.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Finished the all pages until page 50
+Starting with 07_Chapter-4.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Finished the all pages until page 50
+Found  1.5°C 7 time(s)
+Found  2°C 3 time(s)
+Found  3°C 1 time(s)
+Found  4°C 2 time(s)
+Found  4.5°C 1 time(s)
+Starting with 07_SROCC_Ch03_FINAL.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Finished the all pages until page 50
+Finished the all pages until page 100
+Starting with 08_SROCC_Ch04_FINAL.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Finished the all pages until page 50
+Finished the all pages until page 100
+Starting with 09_Chapter-6.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Finished the all pages until page 50
+Finished the all pages until page 100
+Found  0.5°C 2 time(s)
+Found  1°C 1 time(s)
+Found  1.5°C 22 time(s)
+Found  2°C 7 time(s)
+Found  2.5°C 2 time(s)
+Found  3°C 2 time(s)
+Found  3.5°C 2 time(s)
+Found  4°C 1 time(s)
+Starting with 09_SROCC_Ch05_FINAL-1.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Finished the all pages until page 50
+Finished the all pages until page 100
+Starting with 10_Chapter-7.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Finished the all pages until page 50
+Finished the all pages until page 100
+Found  0.5°C 1 time(s)
+Found  1°C 3 time(s)
+Found  1.5°C 34 time(s)
+Found  2°C 21 time(s)
+Found  2.5°C 3 time(s)
+Found  3°C 14 time(s)
+Found  3.5°C 3 time(s)
+Found  4°C 2 time(s)
+Starting with 10_SROCC_Ch06_FINAL.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Finished the all pages until page 50
+Starting with 11_SROCC_CCB9-LLIC_FINAL.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Starting with ipcc_wg3_ar5_full.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Finished the all pages until page 50
+Finished the all pages until page 100
+Finished the all pages until page 150
+Finished the all pages until page 200
+Finished the all pages until page 250
+Finished the all pages until page 300
+Finished the all pages until page 350
+Finished the all pages until page 400
+Finished the all pages until page 450
+Finished the all pages until page 500
+Finished the all pages until page 550
+Finished the all pages until page 600
+Finished the all pages until page 650
+Finished the all pages until page 700
+Finished the all pages until page 750
+Finished the all pages until page 800
+Finished the all pages until page 850
+Finished the all pages until page 900
+Finished the all pages until page 950
+Finished the all pages until page 1000
+Finished the all pages until page 1050
+Finished the all pages until page 1100
+Finished the all pages until page 1150
+Finished the all pages until page 1200
+Finished the all pages until page 1250
+Finished the all pages until page 1300
+Finished the all pages until page 1350
+Finished the all pages until page 1400
+Finished the all pages until page 1450
+Found  2°C 12 time(s)
+Found  2.5°C 2 time(s)
+Starting with SR15_Chapter1_Low_Res.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Found  0.5°C 4 time(s)
+Found  1°C 10 time(s)
+Found  1.5°C 247 time(s)
+Found  2°C 42 time(s)
+Found  3°C 1 time(s)
+Found  4°C 2 time(s)
+Starting with SR15_Chapter2_Low_Res.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Finished the all pages until page 50
+Found  0.5°C 1 time(s)
+Found  1°C 1 time(s)
+Found  1.5°C 611 time(s)
+Found  2°C 130 time(s)
+Found  6°C 1 time(s)
+Starting with SR15_Chapter3_Low_Res.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Finished the all pages until page 50
+Finished the all pages until page 100
+Found  0.5°C 30 time(s)
+Found  1°C 47 time(s)
+Found  1.5°C 970 time(s)
+Found  2°C 665 time(s)
+Found  2.5°C 14 time(s)
+Found  3°C 45 time(s)
+Found  3.5°C 4 time(s)
+Found  4°C 17 time(s)
+Found  4.5°C 3 time(s)
+Found  5°C 1 time(s)
+Found  6°C 3 time(s)
+Found  8°C 3 time(s)
+Starting with SR15_Chapter4_Low_Res.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Finished the all pages until page 50
+Finished the all pages until page 100
+Found  1°C 4 time(s)
+Found  1.5°C 303 time(s)
+Found  2°C 55 time(s)
+Starting with SR15_Chapter5_Low_Res.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Finished the all pages until page 50
+Found  1°C 3 time(s)
+Found  1.5°C 252 time(s)
+Found  2°C 63 time(s)
+Found  4°C 2 time(s)
+Starting with SRCCL-Chapter-5.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Finished the all pages until page 50
+Finished the all pages until page 100
+Found  1°C 2 time(s)
+Found  1.5°C 11 time(s)
+Found  2°C 14 time(s)
+Found  3°C 1 time(s)
+Found  4°C 5 time(s)
+Starting with WG1AR5_all_final.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Finished the all pages until page 50
+Finished the all pages until page 100
+Finished the all pages until page 150
+Finished the all pages until page 200
+Finished the all pages until page 250
+Finished the all pages until page 300
+Finished the all pages until page 350
+Finished the all pages until page 400
+Finished the all pages until page 450
+Finished the all pages until page 500
+Finished the all pages until page 550
+Finished the all pages until page 600
+Finished the all pages until page 650
+Finished the all pages until page 700
+Finished the all pages until page 750
+Finished the all pages until page 800
+Finished the all pages until page 850
+Finished the all pages until page 900
+Finished the all pages until page 950
+Finished the all pages until page 1000
+Finished the all pages until page 1050
+Finished the all pages until page 1100
+Finished the all pages until page 1150
+Finished the all pages until page 1200
+Finished the all pages until page 1250
+Finished the all pages until page 1300
+Finished the all pages until page 1350
+Finished the all pages until page 1400
+Finished the all pages until page 1450
+Finished the all pages until page 1500
+Finished the all pages until page 1550
+Found  0.5°C 21 time(s)
+Found  1°C 71 time(s)
+Found  1.5°C 43 time(s)
+Found  2°C 104 time(s)
+Found  2.5°C 27 time(s)
+Found  3°C 32 time(s)
+Found  3.5°C 5 time(s)
+Found  4°C 25 time(s)
+Found  4.5°C 24 time(s)
+Found  5°C 7 time(s)
+Found  6°C 18 time(s)
+Found  6.5°C 1 time(s)
+Found  7°C 3 time(s)
+Found  8°C 5 time(s)
+Found  9°C 3 time(s)
+Found  10°C 3 time(s)
+Starting with WGIIAR5-PartA_FINAL.pdf
+Starting to read in the single pages
+Finished the all pages until page 0
+Finished the all pages until page 50
+Finished the all pages until page 100
+Finished the all pages until page 150
+Finished the all pages until page 200
+Finished the all pages until page 250
+Finished the all pages until page 300
+Finished the all pages until page 350
+Finished the all pages until page 400
+Finished the all pages until page 450
+Finished the all pages until page 500
+Finished the all pages until page 550
+Finished the all pages until page 600
+Finished the all pages until page 650
+Finished the all pages until page 700
+Finished the all pages until page 750
+Finished the all pages until page 800
+Finished the all pages until page 850
+Finished the all pages until page 900
+Finished the all pages until page 950
+Finished the all pages until page 1000
+Finished the all pages until page 1050
+Finished the all pages until page 1100
+Found  0.5°C 2 time(s)
+Found  1°C 45 time(s)
+Found  1.5°C 14 time(s)
+Found  2°C 113 time(s)
+Found  2.5°C 7 time(s)
+Found  3°C 39 time(s)
+Found  3.5°C 8 time(s)
+Found  4°C 268 time(s)
+Found  5°C 9 time(s)
+Found  5.5°C 1 time(s)
+Found  6°C 5 time(s)
+Found  7°C 4 time(s)
+Found  8°C 3 time(s)
+Found  10°C 4 time(s)

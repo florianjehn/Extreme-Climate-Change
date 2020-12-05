@@ -7,7 +7,7 @@ Created on Tue Dec  1 11:56:42 2020
 import re
 import numpy as np
 import pandas as pd
-
+import os
 
 from pdfminer3.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer3.converter import TextConverter
@@ -33,7 +33,7 @@ def convert_pdf_to_txt(path):
     for page in PDFPage.get_pages(fp, pagenos, maxpages=maxpages, password=password,caching=caching, check_extractable=True):
         # Give some feedback that somethign is happening
         if i % 50 == 0:
-            print("Finished the all pages until page " + str(i))
+            print("Finished all pages until page " + str(i))
         interpreter.process_page(page)
         i += 1
 
@@ -46,9 +46,8 @@ def convert_pdf_to_txt(path):
 
 # Working Group Reports
 # Donadloadable at https://www.ipcc.ch/working-groups/
-wg1 = "WG1AR5_all_final.pdf"
-wg2 = "WGIIAR5-PartA_FINAL.pdf"
-wg3 = "ipcc_wg3_ar5_full.pdf"
+cwd = os.getcwd()
+reports = [file for file in os.listdir(cwd + os.sep + "reports") if file[-4:] == ".pdf" ]
 
 # Count all the temperatere
 temp_dict = {}
@@ -62,16 +61,17 @@ for i in np.arange(0.5,10.5, 0.5):
     temp_dict[key] = 0
         
 # Go through all working group reports
-for wg in [wg1, wg2, wg3]:
-    print("Starting with " + wg)
+for report in reports:
+    print("Starting with " + report)
     # Read it in 
-    text = convert_pdf_to_txt(wg)
+    text = convert_pdf_to_txt("reports" + os.sep + report)
     # count how often a temperature occures
     for temp in temp_dict.keys():
         number_of_occurences = len(re.findall(temp, text))   
         if number_of_occurences > 0: 
             print("Found " + temp +  " " + str(number_of_occurences) + " time(s)")
             temp_dict[temp] += number_of_occurences
+
 
             
 # Save the results
