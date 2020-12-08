@@ -8,9 +8,10 @@ import pandas as pd
 from scipy import interpolate
 import numpy as np
 from sklearn.metrics import auc
+import os
 
 # Read in the extracted xy data from the weitzman curve
-curve_xy = pd.read_csv("wagner_weitzman_2015_700ppm.csv", sep=";")
+curve_xy = pd.read_csv("Data" + os.sep + "wagner_weitzman_2015_700ppm.csv", sep=";")
 
 # Interpolate it to make it more smooth
 tck = interpolate.splrep(curve_xy["x"], curve_xy["y"],s=0)
@@ -64,4 +65,4 @@ warming_prob["9°C"] = auc(curve_new.loc[875:925,"x"], curve_new.loc[875:925, "y
 warming_prob["9.5°C"] = auc(curve_new.loc[925:975,"x"], curve_new.loc[925:975, "y"])
 warming_prob["10°C"] = auc(curve_new.loc[975:1025,"x"], curve_new.loc[975:1025, "y"])
 
-warming_prob.transpose().to_csv("warming_probabilities.csv",sep=";")
+warming_prob.transpose().to_csv("Results" +os.sep+ "warming_probabilities.csv",sep=";")

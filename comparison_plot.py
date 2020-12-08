@@ -13,7 +13,7 @@ def plot_nicer(ax, with_legend=True):
   alpha=0.7
   # Remove borders
   for spine in ax.spines.values():
-    spine.set_visible(False)
+    spine.set_color("lightgray")
   # Make text grey
   plt.setp(ax.get_yticklabels(), alpha=alpha)
   plt.setp(ax.get_xticklabels(), alpha=alpha)
@@ -38,10 +38,11 @@ counts_1_5_report = pd.read_csv("temp_counts_1_5_special_report.csv", sep=";",in
 
 # Create a gridspec to plot in
 fig = plt.figure()
-gs = fig.add_gridspec(2,2)
+gs = fig.add_gridspec(2,4)
 ax1 = fig.add_subplot(gs[0,:])
-ax2 = fig.add_subplot(gs[1,0])
-ax3 = fig.add_subplot(gs[1,1])
+ax2 = fig.add_subplot(gs[1,:2])
+ax3 = fig.add_subplot(gs[1,2])
+ax4 = fig.add_subplot(gs[1,3])
 
 # Replace the spaces in the temperature description
 ipcc_counts.index = ipcc_counts.index.str.replace(" ","")
@@ -71,35 +72,43 @@ compare_df.columns = ["Relative Occurence in IPCC Reports", "Probability of Warm
 
 
 
-##### Preparation for the >6°C Plot
+##### Preparation for the >=6°C and >=3°C Plot
 # Only use the values for 6 and above
 over_6 = pd.DataFrame(compare_df.iloc[11:].sum()).transpose()
 # The sum of probability is slightly above 10 because of the way it is 
 # calculated from the pdf. Set to 10 here, so it is in line with Wagner and 
 # Weitzmann
 over_6.iloc[0,1] = 10
+over_3 = pd.DataFrame(compare_df.iloc[5:].sum()).transpose()
 
 
 ##### Plot the total count
-compare_df.plot(kind="bar", ax=ax1)
+compare_df.plot(kind="bar", ax=ax1,zorder=5)
 ax1.set_title("a) Temperature Count In All Major IPCC Reports Since AR5")
 
 
 #### Plot without the 1.5 special report
-compare_df_without_1_5.plot(kind="bar", ax=ax2, legend=False)
+compare_df_without_1_5.plot(kind="bar", ax=ax2, legend=False,zorder=5)
 ax2.set_title("b) Excluding Special Report On 1.5°C Warming")
 plt.setp(ax2.xaxis.get_majorticklabels(), fontsize=6)
 
 
-#### Plot only 6 degrees and above
-over_6.plot(kind="bar", ax=ax3, width=0.1, legend=False)
-ax3.set_title("c) Sum Comparison For 6°C And Above")
+#### Plot 3
+over_3.plot(kind="bar", ax=ax3, width=0.1, legend=False,zorder=5)
+ax3.set_title("c) 3°C And Above")
 plt.setp(ax3.xaxis.get_majorticklabels(), color="white")
+
+
+#### Plot only 6 degrees and above
+over_6.plot(kind="bar", ax=ax4, width=0.1, legend=False,zorder=5)
+ax4.set_title("d) 6°C And Above")
+plt.setp(ax4.xaxis.get_majorticklabels(), color="white")
+
 
 
 # # make nicer
 i = 0
-for ax in [ax1, ax2, ax3]:
+for ax in [ax1, ax2, ax3, ax4]:
     ax.set_ylabel("Percentage [%]")
     if i == 0:
         plot_nicer(ax)
