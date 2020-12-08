@@ -45,35 +45,43 @@ def convert_pdf_to_txt(path):
     return text
 
 # Working Group Reports
-# Donadloadable at https://www.ipcc.ch/working-groups/
+# Downloadable at https://www.ipcc.ch/working-groups/
 cwd = os.getcwd()
 reports = [file for file in os.listdir(cwd + os.sep + "reports") if file[-4:] == ".pdf" ]
 
-# Count all the temperatere
-temp_dict = {}
-for i in np.arange(0.5,10.5, 0.5):
-    # Test if it is a float or not to format it right
-    if i == int(i):
-        # Add an empty space at the beginnign to make sure this is not counting e.g. 1.5°C  as 5°C
-        key = " " + str(int(i)) + "°C"
-    else: 
-        key = " " + str(i )+ "°C"
-    temp_dict[key] = 0
-        
+def create_temp_dict():
+    # Count all the temperatere
+    temp_dict = {}
+    for i in np.arange(0.5,10.5, 0.5):
+        # Test if it is a float or not to format it right
+        if i == int(i):
+            # Add an empty space at the beginnign to make sure this is not counting e.g. 1.5°C  as 5°C
+            key = " " + str(int(i)) + "°C"
+        else: 
+            key = " " + str(i )+ "°C"
+        temp_dict[key] = 0
+    return temp_dict
+
+temp_counts = pd.DataFrame()
 # Go through all working group reports
 for report in reports:
     print("Starting with " + report)
     # Read it in 
     text = convert_pdf_to_txt("reports" + os.sep + report)
+    temp_dict = create_temp_dict()
     # count how often a temperature occures
     for temp in temp_dict.keys():
         number_of_occurences = len(re.findall(temp, text))   
         if number_of_occurences > 0: 
             print("Found " + temp +  " " + str(number_of_occurences) + " time(s)")
             temp_dict[temp] += number_of_occurences
-
-
+    # Save the results for the single pdf
+    temp_counts_pdf = pd.DataFrame.from_dict(temp_dict, orient="index")
+    temp_counts_pdf.to_csv("Results" + os.sep + "counts_" + report[:-4] + ".csv", sep=";")
+    # Combine it with the overall data
+    temp_counts = pd.concat([temp_counts, temp_counts_pdf],axis=1)
+    
             
 # Save the results
-temp_counts = pd.DataFrame.from_dict(temp_dict, orient="index")
-temp_counts.to_csv("temp_counts.csv", sep=";")
+temp_counts = temp_counts.sum(axis=1)
+temp_counts.to_csv("Results" + os.sep + "temp_counts_all.csv", sep=";")

@@ -7,11 +7,11 @@ Created on Sat Dec  5 13:32:12 2020
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 
 def plot_nicer(ax, with_legend=True):
   """Takes an axis objects and makes it look nicer"""
   alpha=0.7
-  # Remove borders
   for spine in ax.spines.values():
     spine.set_color("lightgray")
   # Make text grey
@@ -32,9 +32,9 @@ def plot_nicer(ax, with_legend=True):
   ax.xaxis.grid(False)
 
 # Read in the data
-prob_temp = pd.read_csv("warming_probabilities.csv", sep=";", index_col=0)
-ipcc_counts = pd.read_csv("temp_counts.csv", sep=";", index_col=0)
-counts_1_5_report = pd.read_csv("temp_counts_1_5_special_report.csv", sep=";",index_col=0)
+prob_temp = pd.read_csv("Results" + os.sep + "warming_probabilities.csv", sep=";", index_col=0)
+ipcc_counts = pd.read_csv("Results" + os.sep + "temp_counts_all.csv", sep=";", index_col=0)
+counts_1_5_report = pd.read_csv("Results" + os.sep + "counts_SR15_Full_Report_High_Res.csv", sep=";",index_col=0)
 
 # Create a gridspec to plot in
 fig = plt.figure()
@@ -52,13 +52,14 @@ counts_1_5_report.index = counts_1_5_report.index.str.replace(" ","")
 prob_temp = prob_temp * 100
 
 ##### Preparation for the count without 1_5 report
-without_1_5 = ipcc_counts - counts_1_5_report
+without_1_5 = pd.DataFrame(ipcc_counts[ipcc_counts.columns[0]] - 
+                           counts_1_5_report[counts_1_5_report.columns[0]])
 without_1_5_total = without_1_5.sum()
 # Convert to percent
 without_1_5[without_1_5.columns[0]] = (without_1_5/without_1_5_total) * 100
 # merge
 compare_df_without_1_5 = without_1_5.merge(prob_temp,left_index=True, right_index=True)
-compare_df_without_1_5.columns = ["Relative Occurence in IPCC Reports", "Probability of Warming"]
+compare_df_without_1_5.columns = ["Relative occurence in IPCC reports", "Probability of warming"]
 
 
 ##### Preparation for the total counts
@@ -67,7 +68,7 @@ ipcc_total = ipcc_counts.sum()
 ipcc_counts[ipcc_counts.columns[0]] = (ipcc_counts / ipcc_total) * 100
 # merge
 compare_df = ipcc_counts.merge(prob_temp,left_index=True, right_index=True)
-compare_df.columns = ["Relative Occurence in IPCC Reports", "Probability of Warming"]
+compare_df.columns = ["Relative occurence in IPCC reports", "Probability of warming"]
 
 
 
@@ -83,30 +84,30 @@ over_3 = pd.DataFrame(compare_df.iloc[5:].sum()).transpose()
 
 
 ##### Plot the total count
-compare_df.plot(kind="bar", ax=ax1,zorder=5)
-ax1.set_title("a) Temperature Count In All Major IPCC Reports Since AR5")
+compare_df.plot(kind="bar", ax=ax1,zorder=5, color=["#7395F4", "#DE624E"], edgecolor="black" )
+ax1.set_title("a) Temperature count in AR5 working group reports and special reports until 2020")
 
 
 #### Plot without the 1.5 special report
-compare_df_without_1_5.plot(kind="bar", ax=ax2, legend=False,zorder=5)
-ax2.set_title("b) Excluding Special Report On 1.5°C Warming")
+compare_df_without_1_5.plot(kind="bar", ax=ax2, legend=False,zorder=5, color=["#7395F4", "#DE624E"], edgecolor="black")
+ax2.set_title("b) Excluding special report on 1.5°C warming")
 plt.setp(ax2.xaxis.get_majorticklabels(), fontsize=6)
 
 
 #### Plot 3
-over_3.plot(kind="bar", ax=ax3, width=0.1, legend=False,zorder=5)
-ax3.set_title("c) 3°C And Above")
+over_3.plot(kind="bar", ax=ax3, width=0.1, legend=False,zorder=5, color=["#7395F4", "#DE624E"], edgecolor="black")
+ax3.set_title("c) 3°C and above")
 plt.setp(ax3.xaxis.get_majorticklabels(), color="white")
 
 
 #### Plot only 6 degrees and above
-over_6.plot(kind="bar", ax=ax4, width=0.1, legend=False,zorder=5)
-ax4.set_title("d) 6°C And Above")
+over_6.plot(kind="bar", ax=ax4, width=0.1, legend=False,zorder=5, color=["#7395F4", "#DE624E"], edgecolor="black")
+ax4.set_title("d) 6°C and above")
 plt.setp(ax4.xaxis.get_majorticklabels(), color="white")
 
 
 
-# # make nicer
+# make nicer
 i = 0
 for ax in [ax1, ax2, ax3, ax4]:
     ax.set_ylabel("Percentage [%]")
