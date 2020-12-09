@@ -80,7 +80,8 @@ def prepare_data(prob_temp, ipcc_counts, counts_1_5_report):
     return compare_df, compare_df_without_1_5, over_3, over_6
 
 
-def plot_figures(compare_df, compare_df_without_1_5, over_3, over_6, ppm, color_prob, color_count):  
+def plot_figures(compare_df, compare_df_without_1_5, over_3, over_6, ppm, 
+                 color_prob, color_count, edgecolor):  
     """Plots the main figures for the different ppm"""  
     # Create a gridspec to plot in
     fig = plt.figure()
@@ -91,21 +92,21 @@ def plot_figures(compare_df, compare_df_without_1_5, over_3, over_6, ppm, color_
     ax4 = fig.add_subplot(gs[1,3])
     
     ##### Plot the total count
-    compare_df.plot(kind="bar", ax=ax1,zorder=5, color=[color_prob, color_count], edgecolor="black" )
+    compare_df.plot(kind="bar", ax=ax1,zorder=5, color=[color_prob, color_count], edgecolor=edgecolor )
     ax1.set_title("a) Temperature count in AR5 working group reports and special reports until 2020")
         
     #### Plot without the 1.5 special report
-    compare_df_without_1_5.plot(kind="bar", ax=ax2, legend=False,zorder=5, color=[color_prob, color_count], edgecolor="black")
+    compare_df_without_1_5.plot(kind="bar", ax=ax2, legend=False,zorder=5, color=[color_prob, color_count], edgecolor=edgecolor)
     ax2.set_title("b) Excluding special report on 1.5°C warming")
     plt.setp(ax2.xaxis.get_majorticklabels(), fontsize=6)
        
     #### Plot 3
-    over_3.plot(kind="bar", ax=ax3, width=0.1, legend=False,zorder=5, color=[color_prob, color_count], edgecolor="black")
+    over_3.plot(kind="bar", ax=ax3, width=0.1, legend=False,zorder=5, color=[color_prob, color_count], edgecolor=edgecolor)
     ax3.set_title("c) 3°C and above")
     plt.setp(ax3.xaxis.get_majorticklabels(), color="white")
      
     #### Plot only 6 degrees and above
-    over_6.plot(kind="bar", ax=ax4, width=0.1, legend=False,zorder=5, color=[color_prob, color_count], edgecolor="black")
+    over_6.plot(kind="bar", ax=ax4, width=0.1, legend=False,zorder=5, color=[color_prob, color_count], edgecolor=edgecolor)
     ax4.set_title("d) 6°C and above")
     plt.setp(ax4.xaxis.get_majorticklabels(), color="white")
     
@@ -131,13 +132,14 @@ if __name__ == "__main__":
     ipcc_counts, counts_1_5_report = read_counts()
     color_prob = "#BD7F37FF"
     color_count = "#A13941FF"
+    edgecolor = "white"
     # Run for all ppm
     for ppm in np.arange(400, 1001, 50):
         prob_temp = read_probability(ppm)
         compare_df, compare_df_without_1_5, over_3, over_6 = prepare_data(
             prob_temp, ipcc_counts, counts_1_5_report)
         plot_figures(compare_df, compare_df_without_1_5, over_3, over_6, ppm, 
-                     color_prob, color_count)
+                     color_prob, color_count, edgecolor)
         
     
     
