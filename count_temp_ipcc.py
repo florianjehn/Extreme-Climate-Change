@@ -16,6 +16,10 @@ from pdfminer3.pdfpage import PDFPage
 from io import StringIO
 
 def convert_pdf_to_txt(path):
+    """
+    Takes a path and reads the pdf there. Scraps all the text and returns 
+    it as one big string. 
+    """
     # Method taken from https://stackoverflow.com/questions/26494211/extracting-text-from-a-pdf-file-using-pdfminer-in-python
     rsrcmgr = PDFResourceManager()
     retstr = StringIO()
@@ -44,13 +48,9 @@ def convert_pdf_to_txt(path):
     retstr.close()
     return text
 
-# Working Group Reports
-# Downloadable at https://www.ipcc.ch/working-groups/
-cwd = os.getcwd()
-reports = [file for file in os.listdir(cwd + os.sep + "reports") if file[-4:] == ".pdf" ]
 
 def create_temp_dict():
-    # Count all the temperatere
+    """Creates a dictionary for all the single temperatures to count and returns it"""
     temp_dict = {}
     for i in np.arange(0.5,10.5, 0.5):
         # Test if it is a float or not to format it right
@@ -61,6 +61,13 @@ def create_temp_dict():
             key = " " + str(i )+ "°C"
         temp_dict[key] = 0
     return temp_dict
+    
+    
+
+# Working Group Reports
+# Downloadable at https://www.ipcc.ch/working-groups/
+cwd = os.getcwd()
+reports = [file for file in os.listdir(cwd + os.sep + "reports") if file[-4:] == ".pdf" ]
 
 temp_counts = pd.DataFrame()
 # Go through all working group reports
