@@ -9,6 +9,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 import numpy as np
+import seaborn as sns
 
 
 def plot_nicer(ax, with_legend=True):
@@ -34,17 +35,6 @@ def plot_nicer(ax, with_legend=True):
   ax.xaxis.grid(False)
 
 
-def read_counts():
-    # Read in the data
-    ipcc_counts = pd.read_csv("Results" + os.sep + "temp_counts_all.csv", sep=";", index_col=0)
-    counts_1_5_report = pd.read_csv("Results" + os.sep + "counts_SR15_Full_Report_High_Res.csv", sep=";",index_col=0)
-    
-    # Replace the spaces in the temperature description
-    ipcc_counts.index = ipcc_counts.index.str.replace(" ","")
-    counts_1_5_report.index = counts_1_5_report.index.str.replace(" ","")
-    return ipcc_counts, counts_1_5_report
-
-
 def read_probability(ppm):
     prob_temp = pd.read_csv("Results" + os.sep + "warming_probabilities_"+ str(ppm)+"ppm.csv", sep=";", index_col=0)
     return prob_temp
@@ -58,63 +48,46 @@ def prepare_warming_data():
     for ppm in np.arange(400, 1001, 50):
         prob_temp = read_probability(ppm)
         # Convert probability to percent
-        prob_temp = prob_temp * 100
-        warming_df = pd.concat([warming_df, prob_temp])
+        prob_temp = round(prob_temp * 100,0)
+        warming_df = pd.concat([warming_df, prob_temp],axis=1)
+    warming_df.columns = [str(i) + " ppm" for i in np.arange(400, 1001,50)]
+    warming_df = warming_df.transpose()
+    return warming_df
 
 
-def prepare_count_data(ipcc_counts):
-    
-    
-    ##### Preparation for the count without 1_5 report
-    without_1_5 = pd.DataFrame(ipcc_counts[ipcc_counts.columns[0]] - 
-                               counts_1_5_report[counts_1_5_report.columns[0]])
-    without_1_5_total = without_1_5.sum()
-    # Convert to percent
-    without_1_5[without_1_5.columns[0]] = (without_1_5/without_1_5_total) * 100
-    # merge
-    compare_df_without_1_5 = without_1_5.merge(prob_temp,left_index=True, right_index=True)
-    compare_df_without_1_5.columns = ["Relative occurence in IPCC reports", "Probability of warming"]
-    
-    
+def prepare_count_data():
+    """
+    Reads in the counts of the ipcc and changes them to percent
+    """    
+    # Read in the data
+    ipcc_counts = pd.read_csv("Results" + os.sep + "temp_counts_all.csv", sep=";", index_col=0)
+    # Replace the spaces in the temperature description
+    ipcc_counts.index = ipcc_counts.index.str.replace(" ","")
     ##### Preparation for the total counts
     ipcc_total = ipcc_counts.sum()
     # Convert counts to percent
-    ipcc_counts_percent = (ipcc_counts / ipcc_total) * 100
-    # merge
-    compare_df = ipcc_counts_percent.merge(prob_temp,left_index=True, right_index=True)
-    compare_df.columns = ["Relative occurence in IPCC reports", "Probability of warming"]
+    ipcc_counts_percent = round((ipcc_counts / ipcc_total) * 100,0)
     
-    ##### Preparation for the >=6°C and >=3°C Plot
-    over_6 = pd.DataFrame(compare_df.iloc[11:].sum()).transpose()
-    over_3 = pd.DataFrame(compare_df.iloc[5:].sum()).transpose()
-    
-    return compare_df, compare_df_without_1_5, over_3, over_6
+    return ipcc_counts_percent
 
 
-def plot_figures(compare_df, compare_df_without_1_5, over_3, over_6, ppm, 
-                 color_prob, color_count, edgecolor):  
+def plot_figure(combine_df):  
     """Plots the main figures for the different ppm"""  
-
+    sns.heatmap(combine_df,cmap="OrRd", linewidth=0.2, square=True, annot=True, cbar=False)
     fig=plt.gcf()
     fig.set_size_inches(12,6)
     fig.tight_layout()
-    plt.savefig("Figures" + os.sep + "warming_count_"+str(ppm)+".png",dpi=200, bbox_inches="tight")
-    plt.close()
+    plt.savefig("Figures" + os.sep +"heatmap.png",dpi=200, bbox_inches="tight")
     
 if __name__ == "__main__":
     # Read the data
-    ipcc_counts, counts_1_5_report = read_counts()
-    color_prob = "#BD7F37FF"
-    color_count = "#A13941FF"
-    edgecolor = "white"
-    # Run for all ppm
-    for ppm in np.arange(400, 1001, 50):
-        prob_temp = read_probability(ppm)
-        compare_df, compare_df_without_1_5, over_3, over_6 = prepare_data(
-            prob_temp, ipcc_counts, counts_1_5_report)
-        plot_figures(compare_df, compare_df_without_1_5, over_3, over_6, ppm, 
-                     color_prob, color_count, edgecolor)
-        
+    ipcc_counts = prepare_count_data()
+    ipcc_counts.columns = ["IPCC Counts"]
+    warming_df = prepare_warming_data()
+    combine_df = pd.concat([warming_df, ipcc_counts.transpose()])
+    plot_figure(combine_df)
+
+
     
     
     
