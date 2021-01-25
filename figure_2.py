@@ -73,7 +73,9 @@ def prepare_count_data():
 
 def plot_figure(combine_df):  
     """Plots the main figures for the different ppm"""  
-    sns.heatmap(combine_df,cmap="OrRd", linewidth=0.2, square=True, annot=True, cbar=False)
+    ax = sns.heatmap(combine_df,cmap="OrRd", linewidth=0.2, square=True, annot=True, cbar=False)
+    # Add a line to mark the counts
+    ax.hlines([13], *ax.get_xlim())
     fig=plt.gcf()
     fig.set_size_inches(12,6)
     fig.tight_layout()
