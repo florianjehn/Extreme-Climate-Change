@@ -116,7 +116,7 @@ def create_grid():
     """Plots the main figures for the different ppm"""  
     # Create a gridspec to plot in
     fig = plt.figure()
-    gs = fig.add_gridspec(2,4,wspace=1.6,hspace=0.5)
+    gs = fig.add_gridspec(2,4,wspace=1.1,hspace=0.5)
     ax1 = fig.add_subplot(gs[0,:])
     ax2 = fig.add_subplot(gs[1,:2])
     ax3 = fig.add_subplot(gs[1,2])
@@ -133,8 +133,8 @@ def plot_figure(color_prob, color_count, edgecolor):
     # Plot fig a)
     axes[0].bar(x=total_counts["Temp Rise"],height=total_counts["Count"], width=0.3,color=color_count,label="Occurence in IPCC reports")
     axes.append(axes[0].twinx())
-    axes[4].plot(curve_550["x"], curve_550["y"], color=color_prob, linestyle="--", label="Probability curve of warming for 550 ppm")
-    axes[4].plot(curve_700["x"], curve_700["y"], color=color_prob, label="Probability curve of warming for 700 ppm")
+    axes[4].plot(curve_550["x"], curve_550["y"], color=color_prob, linestyle="--", label="Probability curve for 550 ppm")
+    axes[4].plot(curve_700["x"], curve_700["y"], color=color_prob, label="Probability curve for 700 ppm")
     axes[4].set_xlim(-0.5,10.5)
     axes[4].set_ylim(0,0.4)
     axes[4].bar(2,0,color=color_count,label="Occurence in IPCC reports")
@@ -175,7 +175,7 @@ def plot_figure(color_prob, color_count, edgecolor):
     
     # Set lables
     for ax in [axes[0], axes[1]]:
-        ax.set_ylabel("Occurence [/]")
+        ax.set_ylabel("Absolute Occurence [/]")
         ax.set_xlabel("Temperature Change [°C]")
         ax.locator_params(axis='x', nbins=20)
     
@@ -183,7 +183,7 @@ def plot_figure(color_prob, color_count, edgecolor):
         ax.set_ylabel("Relative Occurence [%]")
 
     for ax in axes[4:]:
-        ax.set_ylabel("Probability [/]")
+        ax.set_ylabel("Warming Probability [/]")
     
     axes[0].set_title("a) Temperature count in AR5 working group reports and special reports until 2020")
     axes[1].set_title("b) Excluding special report on 1.5°C warming")
