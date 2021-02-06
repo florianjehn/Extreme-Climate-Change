@@ -209,8 +209,8 @@ def plot_figure(color_prob, color_count, edgecolor):
     
 if __name__ == "__main__":
     # Read the data
-    color_prob = "#3A3A3A"
-    color_count = "#BD7F37FF"
+    color_prob = "#4F4F4F"
+    color_count = "#DBB587"
     edgecolor = "white"
 
     plot_figure(color_prob, color_count, edgecolor)
