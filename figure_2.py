@@ -79,7 +79,7 @@ def plot_figure(combine_df):
     fig=plt.gcf()
     fig.set_size_inches(12,6)
     fig.tight_layout()
-    plt.savefig("Figures" + os.sep +"heatmap.png",dpi=200, bbox_inches="tight")
+    plt.savefig("Figures" + os.sep +"heatmap.png",dpi=400, bbox_inches="tight")
     
 if __name__ == "__main__":
     # Read the data

@@ -204,7 +204,7 @@ def plot_figure(color_prob, color_count, edgecolor):
     fig=plt.gcf()
     fig.set_size_inches(12,6)
     fig.tight_layout()
-    plt.savefig("Figures" + os.sep + "warming_curves.png",dpi=200, bbox_inches="tight")
+    plt.savefig("Figures" + os.sep + "warming_curves.png",dpi=400, bbox_inches="tight")
     plt.close()
     
 if __name__ == "__main__":
