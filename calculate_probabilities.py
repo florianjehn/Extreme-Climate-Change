@@ -68,23 +68,4 @@ if __name__ == "__main__":
     for ppm in np.arange(400, 1001, 50):
         curve_xy = read_data(ppm)
         curve_new = interpolate_curve(curve_xy)
-        get_probability(curve_new, ppm)
-        
-        
-        
-        
-        
-        
-# # by temperature group
-# warming_prob["< 1°C"] = auc(curve_new.loc[0:100,"x"], curve_new.loc[0:100, "y"])
-# warming_prob[">= 1°C < 2°C"] = auc(curve_new.loc[100:200,"x"], curve_new.loc[100:200, "y"])
-# warming_prob[">= 2°C < 3°C"] = auc(curve_new.loc[200:300,"x"], curve_new.loc[200:300, "y"])
-# warming_prob[">= 3°C < 4°C"] = auc(curve_new.loc[300:400,"x"], curve_new.loc[300:400, "y"])
-# warming_prob[">= 4°C < 5°C"] = auc(curve_new.loc[400:500,"x"], curve_new.loc[400:500, "y"])
-# warming_prob[">= 5°C < 6°C"] = auc(curve_new.loc[500:600,"x"], curve_new.loc[500:600, "y"])
-# warming_prob[">= 6°C < 7°C"] = auc(curve_new.loc[600:700,"x"], curve_new.loc[600:700, "y"])
-# warming_prob[">= 7°C < 8°C"] = auc(curve_new.loc[700:800,"x"], curve_new.loc[700:800, "y"])
-# warming_)prob[">= 8°C < 9°C"] = auc(curve_new.loc[800:900,"x"], curve_new.loc[800:900, "y"])
-# warming_prob[">= 9°C < 10°C"] = auc(curve_new.loc[900:1000,"x"], curve_new.loc[900:1000, "y"])
-# # Probability over 10°C is the 1 minus the rest
-# warming_prob[">= 10°C"] = 1-warming_prob.sum(axis=1)
+        get_probability(curve_new, ppm)       

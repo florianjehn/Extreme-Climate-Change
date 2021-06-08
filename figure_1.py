@@ -137,6 +137,7 @@ def plot_figure(color_prob, color_count, edgecolor):
     axes[4].plot(curve_700["x"], curve_700["y"], color=color_prob, label="Probability curve for 700 ppm")
     axes[4].set_xlim(-0.5,10.5)
     axes[4].set_ylim(0,0.4)
+    # add fake label for legend
     axes[4].bar(2,0,color=color_count,label="Occurence in IPCC reports")
     legend = plt.legend()
     # make legend nicer
@@ -167,11 +168,17 @@ def plot_figure(color_prob, color_count, edgecolor):
     count_over_6, prob_over_6 = prepare_data_d()
     axes[3].bar(x=1.5,height=count_over_6,width=0.04, color=color_count)
     axes.append(axes[3].twinx())
-    axes[7].bar(x=1.6,height=prob_over_6,width=0.04, color=color_prob)
+    axes[7].bar(x=1.6,height=prob_over_6,width=0.04, color=color_prob, label="Probability")
     axes[3].set_ylim(0,65)
     axes[7].set_ylim(0,0.65)
     axes[3].set_xlim(1.35, 1.75)
     axes[3].set_xticklabels([""])
+    axes[7].bar(2,0,color=color_count,label="Occurence")
+    legend = plt.legend(fontsize=9)
+    # make legend nicer
+    for text in legend.get_texts():
+        text.set_color("#676767")
+
     
     # Set lables
     for ax in [axes[0], axes[1]]:
@@ -187,13 +194,10 @@ def plot_figure(color_prob, color_count, edgecolor):
     
     axes[0].set_title("a) Temperature count in AR5 working group reports and special reports until 2020")
     axes[1].set_title("b) Excluding special report on 1.5°C warming")
-    axes[2].set_title("c) 3°C and above")
-    axes[3].set_title("d) 6°C and above")
-    
-    
+    axes[2].set_title("c, d) Cumulative probability of warming and cumulative occurence of\nwarming in the IPCC for 3°C (and above) (c) and 6°C (and above) (d)",
+                      loc="left", fontsize=9, color="#4F4F4F")   
     
     # make nicer
-    i = 0
     for ax in axes:
         plot_nicer(ax, with_legend=False)
         plt.setp(ax.xaxis.get_majorticklabels(), rotation=0)
@@ -208,11 +212,11 @@ def plot_figure(color_prob, color_count, edgecolor):
     plt.close()
     
 if __name__ == "__main__":
-    # Read the data
+    # Define colors
     color_prob = "#4F4F4F"
     color_count = "#DBB587"
     edgecolor = "white"
-
+    # Plot
     plot_figure(color_prob, color_count, edgecolor)
         
     
